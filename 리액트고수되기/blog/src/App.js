@@ -72,6 +72,7 @@ function App() {
   );
 }
 
+// 컴포넌트
 function Modal(props){
   return(
     <div>
@@ -156,10 +157,10 @@ export default App;
     3. 유용한 파라미터 2개 사용 가능
 
     부모 -> 자식 state 전송하는법
-    1. <자식컴포넌트 작명 = {state이름}>
+    1. <자식컴포넌트 작명 = {state이름}> 보통 이름 같게 ex) 글제목 = {글제목}
     2. props 파라미터 등록
     3. props.작명 사용
-    4. 
+
     
   ...은 spread 연산자
 
