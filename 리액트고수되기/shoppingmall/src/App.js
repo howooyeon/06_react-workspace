@@ -6,9 +6,9 @@ import Button from 'react-bootstrap/Button';
 import { Navbar, Nav, Form, FormControl, Container, Row, Col } from 'react-bootstrap';
 import bg from './img/bg.png'
 import {a, b} from './data.js'
-import data from './data.js'
+import data from './data.js' // import 꼭 해줘야함
 import { useState } from 'react';
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 
 function App() {
   let [shoes] = useState(data);
@@ -19,8 +19,8 @@ function App() {
     <>
     <br/>
     <Navi/>
-    <Link to ="/">홈</Link>
-    <Link to ="detail">상세페이지</Link>
+    <Link to ="/">Home</Link> or 
+    <Link to ="detail">Detail</Link>
     <Routes>
       <Route path="/" element={
       <> 
@@ -52,12 +52,12 @@ function Navi(){
   return(
     <Navbar bg="light" variant="light">
     <Navbar.Brand href="#home">호연마켓</Navbar.Brand>
-    <Nav className="mr-auto">
-      <Nav.Link href="/">Home</Nav.Link>
-      <Nav.Link href="/detail">Cart</Nav.Link>
-    </Nav>
+        <Nav className="mr-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/detail">Cart</Nav.Link>
+        </Nav>
       <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       </Form>
     </Navbar>
   );
