@@ -32,19 +32,6 @@ function App() {
         글제목변경(copy);
       }}>가나다순 정렬</button>
 
-      {/* <div className='list'>
-        <h4>{글제목[0]} <span onClick={  ()=> { 따봉변경(따봉 + 1) } }>👍</span> {따봉} </h4>
-        <p>9/11 발행</p>
-      </div>
-      <div className='list'>
-        <h4>{글제목[1]}</h4>
-        <p>9/11 발행</p>
-      </div>
-      <div className='list'>
-        <h4 onClick={()=> { setModal(!modal)}}>{글제목[2]}</h4>
-        <p>9/11 발행</p>
-      </div> */}
-
       {
         글제목.map(function(a, i){ // a : 값 자체, i : 인덱스
           return (
@@ -93,15 +80,15 @@ function App() {
   );
 }
 
-// 컴포넌트
+// 컴포넌트(분리되어 있기 때문에 App안에 있기 때문에 이걸 받아 와야된다.)
 function Modal(props){
   return(
     <div>
       <div className='modal' style={{background: props.color}}>
-        <h4>{props.글제목[props.index]}</h4>
+        <h4>{props.글제목[props.index]}</h4> 
         <p>날짜</p>
         <p>상세내용</p>
-        <button onClick={ ()=> {props.글제목변경(['여자 코트 추천'])}}>글수정</button>
+        <button onClick={ ()=> {props.글제목변경(['여자 코트 추천', '강남 우동 맛집', '파이썬 독학'])}}>글수정</button>
       </div>
     </div>
   );
@@ -114,7 +101,6 @@ function Nav(){
     </div>
   );
 }
-
 
 export default App;
 
@@ -181,8 +167,5 @@ export default App;
     1. <자식컴포넌트 작명 = {state이름}> 보통 이름 같게 ex) 글제목 = {글제목}
     2. props 파라미터 등록
     3. props.작명 사용
-
-    
-  ...은 spread 연산자
 
 */
