@@ -12,7 +12,7 @@ function App() {
   let [따봉, 따봉변경] = useState([0, 0 ,0]);
   let [modal, setModal] = useState(false);
   let [index, setIndex] = useState(0);
-
+  let [입력값, 입력값변경] = useState('')
 
   function 함수(){
     console.log(1);
@@ -49,21 +49,42 @@ function App() {
         글제목.map(function(a, i){ // a : 값 자체, i : 인덱스
           return (
             <div className='list'>
-              <h4 onClick={()=>{
+              <h4 onClick={(e)=>{
+                e.stopPropagation // 상위 html로 퍼지는 이벤트 버블링을 막는 코드
                 setModal(!modal)
                 setIndex(i)
-              }
-              }>{글제목[i]} <span onClick={ ()=> {
+              }}>{글제목[i]} <span onClick={ ()=> {
                 let copy = [...따봉];
                 copy[i] = copy[i] + 1;
                 따봉변경(copy)
-              } }>👍</span> {따봉[i]}</h4>
+              }}>👍</span> {따봉[i]}
+              </h4>
               <p>9/11 발행</p>
+              <button onClick={ () => {
+                let copy = [...글제목];
+                copy.splice(index, 1);
+                글제목변경(copy);
+              }}>삭제</button>
             </div>
           )
         })
       }
-      
+
+      <input className='inputChange' onChange={ (e) => {
+        입력값변경(e.target.value);
+        //console.log(입력값);
+        } }/> 
+
+      <button onClick={ () => {
+        let inputChange = document.querySelector('.inputChange');
+        if(inputChange.value != '') {
+          let copy = [...글제목];
+          copy.unshift(inputChange.value); // 입력값도 가능
+          글제목변경(copy);
+          }
+        }
+      }>추가</button>
+
       {
         // 조건식 ? 참일 때 실행할 코드 : 거짓일때 실행할 코드
         modal == true? <Modal color={'skyblue'} index ={index} 글제목 ={글제목} 글제목변경={글제목변경}/> : null
