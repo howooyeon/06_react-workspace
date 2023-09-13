@@ -63,12 +63,12 @@ function Navi(){
   );
 }
 
-function Card(Props){
+function Card(props){
   return(
     <Col sm>
-      <img src = {'https://lovesykkkk.github.io/shoes' + Props.i + '.jpg'} width="80%"/>
-      <h4>{Props.shoes.title}</h4>
-      <p>{Props.shoes.price}원</p>
+      <img src = {'https://lovesykkkk.github.io/shoes' + props.i + '.jpg'} width="80%"/>
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.price}원</p>
     </Col>
   );
 }
