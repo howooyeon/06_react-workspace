@@ -18,7 +18,7 @@ function App() {
     console.log(1);
   }
 
-  return (
+  return ( // 여기부터가 진짜
     <div className="App">
       <Nav/>
       <button onClick={()=> {
@@ -60,7 +60,7 @@ function App() {
       <input className='inputChange' onChange={ (e) => {
         입력값변경(e.target.value);
         //console.log(입력값);
-        } }/> 
+      }}/> 
 
       <button onClick={ (e) => {
           let copy = [...글제목];
@@ -117,7 +117,7 @@ export default App;
   
   * state 사용 이유
     > 일반변수 : 변경되면 html 자동 랜더링 안됨.
-    > state   : 변경되면 html 자동 랜더링
+    > state   : 변경되면 html 자동 랜더링 **
 
   * state는 언제 쓰나
     > 변동시 자동으로 html에 반영되게 만들고 싶다면 

@@ -16,34 +16,31 @@ function App() {
 
   return (
     <div className="App">
-    <>
     <br/>
     <Navi/>
     <Link to ="/">Home</Link> or 
     <Link to ="detail">Detail</Link>
     <Routes>
       <Route path="/" element={
-      <> 
-        <div>메인페이지임</div>
-        <div className='main-bg' style={{ backgroundImage : 'url(' + bg + ')' }}> </div>
-      <Container>
-      <Row>
-        {
-          shoes.map((a, i)=>{
-            return(
-              <Card shoes ={shoes[i]} i={i+1}></Card>
-            )
-          })
-        }
-      </Row>
-      </Container>
-      </>
+        <> 
+          <div>메인페이지임</div>
+          <div className='main-bg' style={{ backgroundImage : 'url(' + bg + ')' }}> </div>
+          <Container>
+            <Row>
+              {
+                shoes.map((a, i)=>{
+                  return(
+                    <Card shoes ={shoes[i]} i={i+1}></Card>
+                  )
+                })
+              }
+            </Row>
+          </Container>
+        </>
       }/>
       <Route path= "/detail" element={<div>상세페이지임</div>}/>
       <Route path="/about" element={<div>어바웃페이지임</div>}/>
     </Routes>
-    
-    </>
     </div>
   );
 }
@@ -51,10 +48,10 @@ function App() {
 function Navi(){
   return(
     <Navbar bg="light" variant="light">
-    <Navbar.Brand href="#home">호연마켓</Navbar.Brand>
+    <Navbar.Brand href="/">호연마켓</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/detail">Cart</Nav.Link>
+          <Nav.Link href="/about">Cart</Nav.Link>
         </Nav>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
