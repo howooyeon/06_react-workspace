@@ -2,6 +2,15 @@
   text-align: center;
 } */
 
+
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+
+.App{
+  padding: 20;
+  font-family: 'Yeon Sung', cursive;
+}
+
+
 .DiaryEditor{
   border: 1px solid grey;
   text-align: center;

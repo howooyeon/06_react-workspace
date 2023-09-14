@@ -1,35 +1,28 @@
-/* eslint-disable */
-
+/*eslint-disabled*/
 import './App.css';
-import Button from 'react-bootstrap/Button';
 import { Navbar, Nav, Form, FormControl, Container, Row, Col } from 'react-bootstrap';
-import bg from './img/bg.png'
-import {a, b} from './data.js'
-import data from './data.js' // import 꼭 해줘야함
+import { Route, Routes, Link} from 'react-router-dom';
 import { useState } from 'react';
-import {Routes, Route, Link, useNavigate} from 'react-router-dom';
+import data from './data.js'
 
 function App() {
-  let [shoes] = useState(data);
-  console.log(shoes);
+  const [cats] = useState(data);
+  console.log(cats);
 
   return (
     <div className="App">
-    <br/>
     <Navi/>
-    <Link to ="/">Home</Link> or 
-    <Link to ="detail">Detail</Link>
     <Routes>
       <Route path="/" element={
         <> 
-          <div>메인페이지임</div>
-          <div className='main-bg' style={{ backgroundImage : 'url(' + bg + ')' }}> </div>
+          <div className='main-bg'> </div>
+          <br/>
           <Container>
             <Row>
               {
-                shoes.map((a, i)=>{
+                cats.map((a, i)=>{
                   return(
-                    <Card shoes ={shoes[i]} i={i+1}></Card>
+                    <Card cats ={cats[i]} i={i+1}></Card>
                   )
                 })
               }
@@ -47,10 +40,12 @@ function App() {
 function Navi(){
   return(
     <Navbar bg="light" variant="light">
-    <Navbar.Brand href="/">호연마켓</Navbar.Brand>
+    <Navbar.Brand  className='navCat' href="/">고친소</Navbar.Brand>
+      <br/><br/><br/><br/>
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/about">Cart</Nav.Link>
+          <Nav.Link href="/about">about</Nav.Link>
+          <Nav.Link href="/qna">Q&A</Nav.Link>
         </Nav>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -62,9 +57,9 @@ function Navi(){
 function Card(props){
   return(
     <Col sm>
-      <img src = {'https://lovesykkkk.github.io/shoes' + props.i + '.jpg'} width="80%"/>
-      <h4>{props.shoes.title}</h4>
-      <p>{props.shoes.price}원</p>
+      <img src = {'https://howooyeon.github.io/cats' + props.i + '.jpg'} width="150px" height="160px"/>
+      <h4>{props.cats.title}</h4>
+      <p>{props.cats.content}</p>
     </Col>
   );
 }

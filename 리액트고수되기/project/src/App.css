@@ -1,0 +1,20 @@
+.main-bg {
+    height: 350px;
+    background-image: url('img/고친소.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .navCat{
+    margin-left: 800px;
+  }
+
+  .mr-sm-2{
+    margin-left: 200px;
+    width: 200px;
+  }
+  
