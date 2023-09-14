@@ -32,6 +32,7 @@ function App() {
       }/>
       <Route path= "/detail" element={<div>상세페이지임</div>}/>
       <Route path="/about" element={<div>어바웃페이지임</div>}/>
+      <Route path="/" element={<div>어바웃페이지임</div>}/>
     </Routes>
     </div>
   );
