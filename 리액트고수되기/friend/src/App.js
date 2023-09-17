@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 import './App.css';
 import { useState } from 'react';
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Link, Route, BrowserRouter as router, Routes } from 'react-router-dom';
 import data from './data.js';
 
 function App() {
@@ -12,13 +14,13 @@ function App() {
     birthday: ''
   });
 
-  const { id, name, hobby, birthday } = inputs;
+  const { id, name, hobby, birthday } = inputs; // 비구조화 할당을 통해 값 추출
 
   const onChange = (e) => {
-    const { value, name } = e.target;
+    const { value, name } = e.target; // 우선 e.target에서 name과 value를 추출
     setInputs({
-      ...inputs,
-      [name]: value
+      ...inputs, // 기존의 input 객체를 복사한 뒤
+      [name]: value // name 키를 가진 값을 value로 설정
     });
   };
 
