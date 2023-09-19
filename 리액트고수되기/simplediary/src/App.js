@@ -13,7 +13,7 @@ function App() {
 
   const onCreate = (author, content, emotion) => {
     const created_date = new Date().getTime();
-
+    
     const newItem = {
       author,
       content,
