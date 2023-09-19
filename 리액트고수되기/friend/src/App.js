@@ -2,11 +2,11 @@
 
 import './App.css';
 import { useState } from 'react';
-import { Link, Route, BrowserRouter as router, Routes } from 'react-router-dom';
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import data from './data.js';
 
 function App() {
-  const [friend, setFriend] = useState(data);
+  const [friends, setFriends] = useState(data);
   const [inputs, setInputs] = useState({
     id: '',
     name: '',
@@ -32,8 +32,8 @@ function App() {
       birthday: birthday
     };
 
-    const updatedFriends = [...friend, newFriend];
-    setFriend(updatedFriends);
+    const updatedFriends = [...friends, newFriend];
+    setFriends(updatedFriends);
     setInputs({
       id: '',
       name: '',
@@ -42,9 +42,9 @@ function App() {
     });
   };
 
-  const onDeleteFriend = (index) => {
-    const updatedFriends = friend.filter((_, i) => i !== index);
-    setFriend(updatedFriends);
+  const onDeleteFriend = (id) => {
+    const updatedFriends = friends.filter((friend) => friend.id !== id);
+    setFriends(updatedFriends);
   };
 
   return (
@@ -55,7 +55,7 @@ function App() {
       
       <Routes>
         <Route path="/add" element={<AddFriendsSection onAddFriend={onAddFriend} onChange={onChange} inputs={inputs} />} />
-        <Route path="/" element={<MainPageTable friend={friend} onDeleteFriend={onDeleteFriend} />} />
+        <Route path="/" element={<MainPageTable friends={friends} onDeleteFriend={onDeleteFriend} />} />
       </Routes>
     </div>
   );
@@ -74,7 +74,7 @@ function AddFriendsSection({ onAddFriend, onChange, inputs }) {
   );
 }
 
-function MainPageTable({ friend, onDeleteFriend }) {
+function MainPageTable({ friends, onDeleteFriend }) {
   return (
     <div>
       <br/>
@@ -89,8 +89,8 @@ function MainPageTable({ friend, onDeleteFriend }) {
           </tr>
         </thead>
         <tbody>
-          {friend.map((friend, index) => (
-            <Friend key={index} friend={friend} onDelete={() => onDeleteFriend(index)} />
+          {friends.map((friend) => (
+            <Friend key={friend.id} friend={friend} onDeleteFriend={onDeleteFriend} />
           ))}
         </tbody>
       </table>
@@ -98,15 +98,15 @@ function MainPageTable({ friend, onDeleteFriend }) {
   );
 }
 
-function Friend(props) {
+function Friend({ friend, onDeleteFriend }) {
   return (
     <tr>
-      <td>{props.friend.id}</td>
-      <td>{props.friend.name}</td>
-      <td>{props.friend.hobby}</td>
-      <td>{props.friend.birthday}</td>
+      <td>{friend.id}</td>
+      <td>{friend.name}</td>
+      <td>{friend.hobby}</td>
+      <td>{friend.birthday}</td>
       <td>
-        <button onClick={props.onDelete}>삭제</button>
+        <button onClick={() => onDeleteFriend(friend.id)}>삭제</button>
       </td>
     </tr>
   );
